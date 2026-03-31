@@ -4,19 +4,19 @@
   }
   let { children }: Props = $props();
 
-  const siteUrl = "https://krupet.com";
-  const siteName = "Krupet - ប្រព័ន្ធគ្រប់គ្រងមន្ទីរពេទ្យ";
+  const siteUrl = "https://lekhapet.com";
+  const siteName = "lekhapet - ប្រព័ន្ធគ្រប់គ្រងមន្ទីរពេទ្យ";
   const siteDescription =
-    "ប្រព័ន្ធគ្រប់គ្រងមន្ទីរពេទ្យ Krupet ផ្តល់សេវាកម្មគ្រប់គ្រងអ្នកជំងឺ ឱសថស្ថាន មន្ទីរពិសោធន៍ និងសេវាកម្មសុខាភិបាលទាំងអស់";
+    "ប្រព័ន្ធគ្រប់គ្រងមន្ទីរពេទ្យ lekhapet ផ្តល់សេវាកម្មគ្រប់គ្រងអ្នកជំងឺ ឱសថស្ថាន មន្ទីរពិសោធន៍ និងសេវាកម្មសុខាភិបាលទាំងអស់";
   const ogImage = `${siteUrl}/assets/img/tiumnel.png`;
-  const twitterHandle = "@krupet";
+  const twitterHandle = "@lekhapet";
 
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "Krupet",
+    name: "lekhapet",
     url: siteUrl,
-    logo: `${siteUrl}/logo_krupet.webp`,
+    logo: `${siteUrl}/logo_lekhapet.webp`,
     description: siteDescription,
     contactPoint: [
       {
@@ -43,7 +43,7 @@
   const softwareSchema = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    name: "Krupet Hospital Management System",
+    name: "lekhapet Hospital Management System",
     applicationCategory: "BusinessApplication",
     operatingSystem: "Web",
     description:
@@ -56,7 +56,7 @@
     },
     provider: {
       "@type": "Organization",
-      name: "Krupet",
+      name: "lekhapet",
       url: siteUrl,
     },
   };
@@ -78,9 +78,9 @@
   <meta property="og:image:height" content="630" />
   <meta
     property="og:image:alt"
-    content="Krupet Hospital Management System - Healthcare Software for Cambodia"
+    content="lekhapet Hospital Management System - Healthcare Software for Cambodia"
   />
-  <meta property="og:site_name" content="Krupet" />
+  <meta property="og:site_name" content="lekhapet" />
   <meta property="og:locale" content="km_KH" />
   <meta property="og:locale:alternate" content="en_US" />
 

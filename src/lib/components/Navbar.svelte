@@ -38,8 +38,8 @@
       <a href="/" class="logo d-flex align-items-center me-auto">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <img src="/logo_krupet.webp" alt="Bootstrap" height="45" />
-        <h1 class="sitename text-primary">គ្រូពេទ្យ</h1>
+        <img src="/logo_lekhapet.webp" alt="Bootstrap" height="45" />
+        <h1 class="sitename text-primary">លេខាពេទ្យ</h1>
       </a>
       <nav id="navmenu" class="navmenu">
         <ul>

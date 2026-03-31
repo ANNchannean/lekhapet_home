@@ -14,7 +14,7 @@ Disallow: /login/
 Disallow: /register/
 
 # Sitemap location
-Sitemap: https://krupet.com/sitemap.xml
+Sitemap: https://lekhapet.com/sitemap.xml
 
 # Crawl delay (optional, be considerate to server)
 Crawl-delay: 1
