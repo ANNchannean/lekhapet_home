@@ -12,8 +12,8 @@
     { title: 'Laboratory', description: 'ការគ្រប់គ្រងមន្ទីរពិសោធន៍', src: 'https://drive.google.com/file/d/1FE_dOk5O3qA25zA89Ur3k3WsLeQwiMGX/view?usp=drive_link', thumb: 'https://drive.google.com/thumbnail?id=1FE_dOk5O3qA25zA89Ur3k3WsLeQwiMGX&sz=w640' },
     { title: 'OB Report', description: 'របាយការណ៍សម្រាលកូន', src: 'https://drive.google.com/file/d/1ZBEyRG_TA-Itjb2QaiNNBYDxTz4ClEpU/view?usp=drive_link', thumb: 'https://drive.google.com/thumbnail?id=1ZBEyRG_TA-Itjb2QaiNNBYDxTz4ClEpU&sz=w640' },
     { title: 'Register Patient', description: 'ការចុះឈ្មោះអ្នកជំងឺ', src: 'https://drive.google.com/file/d/1nNUOJctpFaFBGNPhcXiyMdFyV4O43mmI/view?usp=drive_link', thumb: 'https://drive.google.com/thumbnail?id=1nNUOJctpFaFBGNPhcXiyMdFyV4O43mmI&sz=w640' },
-    { title: 'Vital Signs IPD', description: 'សញ្ញាជីវិតអ្នកជំងឺសម្រាក', src: 'https://drive.google.com/file/d/1XbKnk0cW5x5foAr8q5dj1IKgRrzl8ZFl/view?usp=drive_link', thumb: 'https://drive.google.com/thumbnail?id=1XbKnk0cW5x5foAr8q5dj1IKgRrzl8ZFl&sz=w640' },
-    { title: 'Vital Signs OPD', description: 'សញ្ញាជីវិតអ្នកជំងឺពិគ្រោះក្រៅ', src: 'https://drive.google.com/file/d/1n6KhPUKT5dnkvVb8i_uQfL8b--FDpqkj/view?usp=drive_link', thumb: 'https://drive.google.com/thumbnail?id=1n6KhPUKT5dnkvVb8i_uQfL8b--FDpqkj&sz=w640' }
+    { title: 'Visit IPD', description: 'អ្នកជំងឺសម្រាក', src: 'https://drive.google.com/file/d/1XbKnk0cW5x5foAr8q5dj1IKgRrzl8ZFl/view?usp=drive_link', thumb: 'https://drive.google.com/thumbnail?id=1XbKnk0cW5x5foAr8q5dj1IKgRrzl8ZFl&sz=w640' },
+    { title: 'Visit OPD', description: 'អ្នកជំងឺពិគ្រោះក្រៅ', src: 'https://drive.google.com/file/d/1n6KhPUKT5dnkvVb8i_uQfL8b--FDpqkj/view?usp=drive_link', thumb: 'https://drive.google.com/thumbnail?id=1n6KhPUKT5dnkvVb8i_uQfL8b--FDpqkj&sz=w640' }
   ];
 
   let filteredVideos = $derived(
@@ -1296,6 +1296,8 @@
         {#each filteredVideos as video (video.src)}
           <div class="col-lg-3 col-md-4 col-sm-6 video-card">
             <div class="video-item">
+              <!-- svelte-ignore a11y_click_events_have_key_events -->
+              <!-- svelte-ignore a11y_no_static_element_interactions -->
               <div class="video-thumb-card" onclick={() => openVideoModal(video.src)} style="cursor: pointer;">
                 <div class="video-thumb-icon">
                   <i class="bi bi-play-circle-fill"></i>
