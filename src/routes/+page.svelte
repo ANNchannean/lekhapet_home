@@ -6,14 +6,14 @@
   let selectedVideoUrl = $state('');
 
   const videos = [
-    { title: 'Admit IPD', description: 'ការទទួលអ្នកជំងឺសម្រាកពេទ្យ', src: 'https://drive.google.com/file/d/1hKIrufGKyiw-zjnE9G16zADrAACcQiGe/view?usp=drive_link' },
-    { title: 'Admit OPD', description: 'ការទទួលអ្នកជំងឺពិគ្រោះក្រៅ', src: 'https://drive.google.com/file/d/1nBEliSgG4kaUpRuP0EBwPPeIj94lQMPw/view?usp=drive_link' },
-    { title: 'Imaging Report', description: 'របាយការណ៍រូបភាពវេជ្ជសាស្រ្ត', src: 'https://drive.google.com/file/d/1t7OkhO-DUTc_KdOMaV7ZsmuUReF8n9o4/view?usp=drive_link' },
-    { title: 'Laboratory', description: 'ការគ្រប់គ្រងមន្ទីរពិសោធន៍', src: 'https://drive.google.com/file/d/1FE_dOk5O3qA25zA89Ur3k3WsLeQwiMGX/view?usp=drive_link' },
-    { title: 'OB Report', description: 'របាយការណ៍សម្រាលកូន', src: 'https://drive.google.com/file/d/1ZBEyRG_TA-Itjb2QaiNNBYDxTz4ClEpU/view?usp=drive_link' },
-    { title: 'Register Patient', description: 'ការចុះឈ្មោះអ្នកជំងឺ', src: 'https://drive.google.com/file/d/1nNUOJctpFaFBGNPhcXiyMdFyV4O43mmI/view?usp=drive_link' },
-    { title: 'Vital Signs IPD', description: 'សញ្ញាជីវិតអ្នកជំងឺសម្រាក', src: 'https://drive.google.com/file/d/1XbKnk0cW5x5foAr8q5dj1IKgRrzl8ZFl/view?usp=drive_link' },
-    { title: 'Vital Signs OPD', description: 'សញ្ញាជីវិតអ្នកជំងឺពិគ្រោះក្រៅ', src: 'https://drive.google.com/file/d/1n6KhPUKT5dnkvVb8i_uQfL8b--FDpqkj/view?usp=drive_link' }
+    { title: 'Admit IPD', description: 'ការទទួលអ្នកជំងឺសម្រាកពេទ្យ', src: 'https://drive.google.com/file/d/1hKIrufGKyiw-zjnE9G16zADrAACcQiGe/view?usp=drive_link', thumb: 'https://drive.google.com/thumbnail?id=1hKIrufGKyiw-zjnE9G16zADrAACcQiGe&sz=w640' },
+    { title: 'Admit OPD', description: 'ការទទួលអ្នកជំងឺពិគ្រោះក្រៅ', src: 'https://drive.google.com/file/d/1nBEliSgG4kaUpRuP0EBwPPeIj94lQMPw/view?usp=drive_link', thumb: 'https://drive.google.com/thumbnail?id=1nBEliSgG4kaUpRuP0EBwPPeIj94lQMPw&sz=w640' },
+    { title: 'Imaging Report', description: 'របាយការណ៍រូបភាពវេជ្ជសាស្រ្ត', src: 'https://drive.google.com/file/d/1t7OkhO-DUTc_KdOMaV7ZsmuUReF8n9o4/view?usp=drive_link', thumb: 'https://drive.google.com/thumbnail?id=1t7OkhO-DUTc_KdOMaV7ZsmuUReF8n9o4&sz=w640' },
+    { title: 'Laboratory', description: 'ការគ្រប់គ្រងមន្ទីរពិសោធន៍', src: 'https://drive.google.com/file/d/1FE_dOk5O3qA25zA89Ur3k3WsLeQwiMGX/view?usp=drive_link', thumb: 'https://drive.google.com/thumbnail?id=1FE_dOk5O3qA25zA89Ur3k3WsLeQwiMGX&sz=w640' },
+    { title: 'OB Report', description: 'របាយការណ៍សម្រាលកូន', src: 'https://drive.google.com/file/d/1ZBEyRG_TA-Itjb2QaiNNBYDxTz4ClEpU/view?usp=drive_link', thumb: 'https://drive.google.com/thumbnail?id=1ZBEyRG_TA-Itjb2QaiNNBYDxTz4ClEpU&sz=w640' },
+    { title: 'Register Patient', description: 'ការចុះឈ្មោះអ្នកជំងឺ', src: 'https://drive.google.com/file/d/1nNUOJctpFaFBGNPhcXiyMdFyV4O43mmI/view?usp=drive_link', thumb: 'https://drive.google.com/thumbnail?id=1nNUOJctpFaFBGNPhcXiyMdFyV4O43mmI&sz=w640' },
+    { title: 'Vital Signs IPD', description: 'សញ្ញាជីវិតអ្នកជំងឺសម្រាក', src: 'https://drive.google.com/file/d/1XbKnk0cW5x5foAr8q5dj1IKgRrzl8ZFl/view?usp=drive_link', thumb: 'https://drive.google.com/thumbnail?id=1XbKnk0cW5x5foAr8q5dj1IKgRrzl8ZFl&sz=w640' },
+    { title: 'Vital Signs OPD', description: 'សញ្ញាជីវិតអ្នកជំងឺពិគ្រោះក្រៅ', src: 'https://drive.google.com/file/d/1n6KhPUKT5dnkvVb8i_uQfL8b--FDpqkj/view?usp=drive_link', thumb: 'https://drive.google.com/thumbnail?id=1n6KhPUKT5dnkvVb8i_uQfL8b--FDpqkj&sz=w640' }
   ];
 
   let filteredVideos = $derived(
@@ -1296,21 +1296,11 @@
         {#each filteredVideos as video (video.src)}
           <div class="col-lg-3 col-md-4 col-sm-6 video-card">
             <div class="video-item">
-              <div class="video-thumbnail" onclick={() => openVideoModal(video.src)} style="cursor: pointer;">
-                {#if isGoogleDriveLink(video.src)}
-                  <iframe 
-                    src={getEmbedUrl(video.src)}
-                    class="video-iframe-thumb"
-                    allow="autoplay"
-                  ></iframe>
-                {:else}
-                  <video 
-                    src={video.src} 
-                    muted 
-                    preload="metadata"
-                    aria-label={video.title}
-                  ></video>
-                {/if}
+              <div class="video-thumb-card" onclick={() => openVideoModal(video.src)} style="cursor: pointer;">
+                <div class="video-thumb-icon">
+                  <i class="bi bi-play-circle-fill"></i>
+                </div>
+                <div class="video-thumb-title">{video.title}</div>
               </div>
               <h5>{video.title}</h5>
               <p>{video.description}</p>
