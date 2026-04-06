@@ -2,7 +2,7 @@
   import { page } from "$app/state";
 </script>
 
-<header  class=" sticky-top">
+<header id="header" class="header sticky-top">
   <div class="topbar d-flex align-items-center">
     <div
       class="container d-flex justify-content-center justify-content-md-between"
@@ -51,6 +51,7 @@
           <li><a href="/#services">សេវាកម្ម</a></li>
           <li><a href="/#departments">កញ្ចប់សេវាកម្ម</a></li>
           <li><a href="/#doctors">អ្នកបង្កើត</a></li>
+          <li><a class="text-danger" href="/#howto">របៀបប្រើរ</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>

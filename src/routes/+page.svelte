@@ -1,6 +1,58 @@
 <script lang="ts">
   import Navbar from "$lib/components/Navbar.svelte";
   import Footer from "$lib/components/Footer.svelte";
+
+  let searchTerm = $state('');
+  let selectedVideoUrl = $state('');
+
+  const videos = [
+    { title: 'Admit IPD', description: 'ការទទួលអ្នកជំងឺសម្រាកពេទ្យ', src: 'https://drive.google.com/file/d/1hKIrufGKyiw-zjnE9G16zADrAACcQiGe/view?usp=drive_link' },
+    { title: 'Admit OPD', description: 'ការទទួលអ្នកជំងឺពិគ្រោះក្រៅ', src: 'https://drive.google.com/file/d/1nBEliSgG4kaUpRuP0EBwPPeIj94lQMPw/view?usp=drive_link' },
+    { title: 'Imaging Report', description: 'របាយការណ៍រូបភាពវេជ្ជសាស្រ្ត', src: 'https://drive.google.com/file/d/1t7OkhO-DUTc_KdOMaV7ZsmuUReF8n9o4/view?usp=drive_link' },
+    { title: 'Laboratory', description: 'ការគ្រប់គ្រងមន្ទីរពិសោធន៍', src: 'https://drive.google.com/file/d/1FE_dOk5O3qA25zA89Ur3k3WsLeQwiMGX/view?usp=drive_link' },
+    { title: 'OB Report', description: 'របាយការណ៍សម្រាលកូន', src: 'https://drive.google.com/file/d/1ZBEyRG_TA-Itjb2QaiNNBYDxTz4ClEpU/view?usp=drive_link' },
+    { title: 'Register Patient', description: 'ការចុះឈ្មោះអ្នកជំងឺ', src: 'https://drive.google.com/file/d/1nNUOJctpFaFBGNPhcXiyMdFyV4O43mmI/view?usp=drive_link' },
+    { title: 'Vital Signs IPD', description: 'សញ្ញាជីវិតអ្នកជំងឺសម្រាក', src: 'https://drive.google.com/file/d/1XbKnk0cW5x5foAr8q5dj1IKgRrzl8ZFl/view?usp=drive_link' },
+    { title: 'Vital Signs OPD', description: 'សញ្ញាជីវិតអ្នកជំងឺពិគ្រោះក្រៅ', src: 'https://drive.google.com/file/d/1n6KhPUKT5dnkvVb8i_uQfL8b--FDpqkj/view?usp=drive_link' }
+  ];
+
+  let filteredVideos = $derived(
+    searchTerm.trim() === ''
+      ? videos
+      : videos.filter(v => 
+          v.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          v.description.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+  );
+
+  function isGoogleDriveLink(url: string): boolean {
+    return url.includes('drive.google.com');
+  }
+
+  function getEmbedUrl(url: string): string {
+    if (isGoogleDriveLink(url)) {
+      const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+      if (match) {
+        return `https://drive.google.com/file/d/${match[1]}/preview`;
+      }
+    }
+    return url;
+  }
+
+  function openVideoModal(url: string) {
+    selectedVideoUrl = url;
+    document.querySelectorAll('.video-thumbnail video').forEach((v) => (v as HTMLVideoElement).pause());
+    const modalEl = document.getElementById('videoModal');
+    if (modalEl) {
+      const modal = new (window as unknown as { bootstrap: { Modal: new (el: HTMLElement) => { show: () => void; hide: () => void } } }).bootstrap.Modal(modalEl);
+      
+      modalEl.addEventListener('hidden.bs.modal', () => {
+        selectedVideoUrl = '';
+      });
+      
+      modal.show();
+    }
+  }
 </script>
 
 <svelte:head>
@@ -400,7 +452,7 @@
           <div class="team-member d-flex align-items-start">
             <div class="pic">
               <img
-                src="assets/img/doctors/heng.png"
+                src="assets/img/doctors/heng.jpg"
                 class="img-fluid"
                 alt="Korn Seheng - Project Workflow"
               />
@@ -472,7 +524,7 @@
 
   <section
     id="faq"
-    class="faq section light-background"
+    class="faq section "
     aria-labelledby="faq-heading"
   >
     <div class="container section-title" data-aos="fade-up">
@@ -605,7 +657,7 @@
   </section>
   <!-- /Faq Section -->
 
-  <section id="report" class="reports section" aria-labelledby="report-heading">
+  <section id="report" class="reports section " aria-labelledby="report-heading">
     <div class="container section-title" data-aos="fade-up">
       <h2 id="report-heading">គំរូរបាយការណ៍</h2>
       <p>
@@ -1218,6 +1270,98 @@
     </div>
   </section>
   <!-- /Report Samples Section -->
+
+  <section id="howto" class="howto section" aria-labelledby="howto-heading">
+    <div class="container section-title" data-aos="fade-up">
+      <h2 id="howto-heading">វីដេអូបង្ហាត់ពីរបៀបប្រើប្រាស់</h2>
+      <p>ស្វែងរកនិងមើលវីដេអូបង្ហាត់ប្រើប្រាស់ប្រព័ន្ធ</p>
+    </div>
+
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col-lg-6 mx-auto">
+          <div class="search-box">
+            <i class="bi bi-search"></i>
+            <input
+              type="text"
+              id="videoSearch"
+              placeholder="ស្វែងរកវីដេអូ..."
+              bind:value={searchTerm}
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="row gy-4" id="videoGrid">
+        {#each filteredVideos as video (video.src)}
+          <div class="col-lg-3 col-md-4 col-sm-6 video-card">
+            <div class="video-item">
+              <div class="video-thumbnail" onclick={() => openVideoModal(video.src)} style="cursor: pointer;">
+                {#if isGoogleDriveLink(video.src)}
+                  <iframe 
+                    src={getEmbedUrl(video.src)}
+                    class="video-iframe-thumb"
+                    allow="autoplay"
+                  ></iframe>
+                {:else}
+                  <video 
+                    src={video.src} 
+                    muted 
+                    preload="metadata"
+                    aria-label={video.title}
+                  ></video>
+                {/if}
+              </div>
+              <h5>{video.title}</h5>
+              <p>{video.description}</p>
+            </div>
+          </div>
+        {/each}
+      </div>
+
+      {#if filteredVideos.length === 0}
+        <div class="text-center py-5">
+          <i class="bi bi-search" style="font-size: 3rem; color: #ccc;"></i>
+          <p class="mt-3">មិនមានលទ្ធផលស្វែងរក</p>
+        </div>
+      {/if}
+    </div>
+  </section>
+
+  <div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">វីដេអូបង្ហាត់ពីរបៀបប្រើប្រាស់</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          {#if selectedVideoUrl}
+            {#key selectedVideoUrl}
+              {#if isGoogleDriveLink(selectedVideoUrl)}
+                <!-- svelte-ignore a11y_missing_attribute -->
+                <iframe
+                  src={getEmbedUrl(selectedVideoUrl)}
+                  class="w-100"
+                  style="height: 70vh;"
+                  allow="autoplay"
+                  allowfullscreen
+                ></iframe>
+              {:else}
+                <!-- svelte-ignore a11y_media_has_caption -->
+                <video 
+                  src={selectedVideoUrl} 
+                  controls 
+                  autoplay 
+                  class="w-100"
+                ></video>
+              {/if}
+            {/key}
+          {/if}
+        </div>
+      </div>
+    </div>
+  </div>
 </main>
 
 <Footer />
