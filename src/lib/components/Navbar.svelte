@@ -2,7 +2,7 @@
   import { page } from "$app/state";
 </script>
 
-<header id="header" class="header sticky-top">
+<header  class=" sticky-top">
   <div class="topbar d-flex align-items-center">
     <div
       class="container d-flex justify-content-center justify-content-md-between"
