@@ -2,31 +2,79 @@
   import Navbar from "$lib/components/Navbar.svelte";
   import Footer from "$lib/components/Footer.svelte";
 
-  let searchTerm = $state('');
-  let selectedVideoUrl = $state('');
+  let searchTerm = $state("");
+  let selectedVideoUrl = $state("");
 
   const videos = [
-    { title: 'Admit IPD', description: 'ការទទួលអ្នកជំងឺសម្រាកពេទ្យ', src: 'https://drive.google.com/file/d/1hKIrufGKyiw-zjnE9G16zADrAACcQiGe/view?usp=drive_link', thumb: 'https://drive.google.com/thumbnail?id=1hKIrufGKyiw-zjnE9G16zADrAACcQiGe&sz=w640' },
-    { title: 'Admit OPD', description: 'ការទទួលអ្នកជំងឺពិគ្រោះក្រៅ', src: 'https://drive.google.com/file/d/1nBEliSgG4kaUpRuP0EBwPPeIj94lQMPw/view?usp=drive_link', thumb: 'https://drive.google.com/thumbnail?id=1nBEliSgG4kaUpRuP0EBwPPeIj94lQMPw&sz=w640' },
-    { title: 'Imaging Report', description: 'របាយការណ៍រូបភាពវេជ្ជសាស្រ្ត', src: 'https://drive.google.com/file/d/1t7OkhO-DUTc_KdOMaV7ZsmuUReF8n9o4/view?usp=drive_link', thumb: 'https://drive.google.com/thumbnail?id=1t7OkhO-DUTc_KdOMaV7ZsmuUReF8n9o4&sz=w640' },
-    { title: 'Laboratory', description: 'ការគ្រប់គ្រងមន្ទីរពិសោធន៍', src: 'https://drive.google.com/file/d/1FE_dOk5O3qA25zA89Ur3k3WsLeQwiMGX/view?usp=drive_link', thumb: 'https://drive.google.com/thumbnail?id=1FE_dOk5O3qA25zA89Ur3k3WsLeQwiMGX&sz=w640' },
-    { title: 'OB Report', description: 'របាយការណ៍សម្រាលកូន', src: 'https://drive.google.com/file/d/1ZBEyRG_TA-Itjb2QaiNNBYDxTz4ClEpU/view?usp=drive_link', thumb: 'https://drive.google.com/thumbnail?id=1ZBEyRG_TA-Itjb2QaiNNBYDxTz4ClEpU&sz=w640' },
-    { title: 'Register Patient', description: 'ការចុះឈ្មោះអ្នកជំងឺ', src: 'https://drive.google.com/file/d/1nNUOJctpFaFBGNPhcXiyMdFyV4O43mmI/view?usp=drive_link', thumb: 'https://drive.google.com/thumbnail?id=1nNUOJctpFaFBGNPhcXiyMdFyV4O43mmI&sz=w640' },
-    { title: 'Visit IPD', description: 'អ្នកជំងឺសម្រាក', src: 'https://drive.google.com/file/d/1XbKnk0cW5x5foAr8q5dj1IKgRrzl8ZFl/view?usp=drive_link', thumb: 'https://drive.google.com/thumbnail?id=1XbKnk0cW5x5foAr8q5dj1IKgRrzl8ZFl&sz=w640' },
-    { title: 'Visit OPD', description: 'អ្នកជំងឺពិគ្រោះក្រៅ', src: 'https://drive.google.com/file/d/1n6KhPUKT5dnkvVb8i_uQfL8b--FDpqkj/view?usp=drive_link', thumb: 'https://drive.google.com/thumbnail?id=1n6KhPUKT5dnkvVb8i_uQfL8b--FDpqkj&sz=w640' }
+    {
+      title: "Admit IPD",
+      description: "ការទទួលអ្នកជំងឺសម្រាកពេទ្យ",
+      src: "https://drive.google.com/file/d/1hKIrufGKyiw-zjnE9G16zADrAACcQiGe/view?usp=drive_link",
+    },
+    {
+      title: "Admit OPD",
+      description: "ការទទួលអ្នកជំងឺពិគ្រោះក្រៅ",
+      src: "https://drive.google.com/file/d/1nBEliSgG4kaUpRuP0EBwPPeIj94lQMPw/view?usp=drive_link",
+    },
+    {
+      title: "Imaging Report",
+      description: "របាយការណ៍រូបភាពវេជ្ជសាស្រ្ត",
+      src: "https://drive.google.com/file/d/1t7OkhO-DUTc_KdOMaV7ZsmuUReF8n9o4/view?usp=drive_link",
+    },
+    {
+      title: "Laboratory",
+      description: "ការគ្រប់គ្រងមន្ទីរពិសោធន៍",
+      src: "https://drive.google.com/file/d/1FE_dOk5O3qA25zA89Ur3k3WsLeQwiMGX/view?usp=drive_link",
+    },
+    {
+      title: "OB Report",
+      description: "របាយការណ៍សម្រាលកូន",
+      src: "https://drive.google.com/file/d/1ZBEyRG_TA-Itjb2QaiNNBYDxTz4ClEpU/view?usp=drive_link",
+    },
+    {
+      title: "Register Patient",
+      description: "ការចុះឈ្មោះអ្នកជំងឺ",
+      src: "https://drive.google.com/file/d/1nNUOJctpFaFBGNPhcXiyMdFyV4O43mmI/view?usp=drive_link",
+    },
+    {
+      title: "Visit IPD",
+      description: "អ្នកជំងឺសម្រាក",
+      src: "https://drive.google.com/file/d/1XbKnk0cW5x5foAr8q5dj1IKgRrzl8ZFl/view?usp=drive_link",
+    },
+    {
+      title: "Visit OPD",
+      description: "អ្នកជំងឺពិគ្រោះក្រៅ",
+      src: "https://drive.google.com/file/d/1n6KhPUKT5dnkvVb8i_uQfL8b--FDpqkj/view?usp=drive_link",
+    },
+    {
+      title: "Vaccine",
+      description: "កាចាក់វ៉ាក់សាំង",
+      src: "https://drive.google.com/file/d/19e7UNy2lzBfR3Ra5Xu8WqHpPBCHwZVks/view?usp=drive_link",
+    },
+    {
+      title: "Nursing IPD",
+      description: "ការព្យាបាលប្រចាំថ្ងៃ",
+      src: "https://drive.google.com/file/d/10lEAArUtlrumND_Sgz_sm_J8Iz8wcmur/view?usp=drive_link",
+    },
+    {
+      title: "Billing IPD-OPD",
+      description: "ទូទាត់ប្រាក់",
+      src: "https://drive.google.com/file/d/1CBxN1pEIwH9e-b5EBzk2MoAYio_nJy2D/view?usp=drive_link",
+    },
   ];
 
   let filteredVideos = $derived(
-    searchTerm.trim() === ''
+    searchTerm.trim() === ""
       ? videos
-      : videos.filter(v => 
-          v.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          v.description.toLowerCase().includes(searchTerm.toLowerCase())
-        )
+      : videos.filter(
+          (v) =>
+            v.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            v.description.toLowerCase().includes(searchTerm.toLowerCase()),
+        ),
   );
 
   function isGoogleDriveLink(url: string): boolean {
-    return url.includes('drive.google.com');
+    return url.includes("drive.google.com");
   }
 
   function getEmbedUrl(url: string): string {
@@ -41,15 +89,26 @@
 
   function openVideoModal(url: string) {
     selectedVideoUrl = url;
-    document.querySelectorAll('.video-thumbnail video').forEach((v) => (v as HTMLVideoElement).pause());
-    const modalEl = document.getElementById('videoModal');
+    document
+      .querySelectorAll(".video-thumbnail video")
+      .forEach((v) => (v as HTMLVideoElement).pause());
+    const modalEl = document.getElementById("videoModal");
     if (modalEl) {
-      const modal = new (window as unknown as { bootstrap: { Modal: new (el: HTMLElement) => { show: () => void; hide: () => void } } }).bootstrap.Modal(modalEl);
-      
-      modalEl.addEventListener('hidden.bs.modal', () => {
-        selectedVideoUrl = '';
+      const modal = new (
+        window as unknown as {
+          bootstrap: {
+            Modal: new (el: HTMLElement) => {
+              show: () => void;
+              hide: () => void;
+            };
+          };
+        }
+      ).bootstrap.Modal(modalEl);
+
+      modalEl.addEventListener("hidden.bs.modal", () => {
+        selectedVideoUrl = "";
       });
-      
+
       modal.show();
     }
   }
@@ -108,7 +167,8 @@
             <p>
               គឺជាប្រព័ន្ធឌីជីថលដែលត្រូវបានរចនាឡើងដើម្បីគ្រប់គ្រងដំណើរការចម្បងៗនៅក្នុងមន្ទីរពេទ្យឬស្ថាប័នសុខាភិបាលផ្សេងៗ។
               ប្រព័ន្ធនេះអនុញ្ញាតឱ្យមានការគ្រប់គ្រងធនធាន, អ្នកជំងឺ,
-              ការពិនិត្យវេជ្ជសាស្រ្ត និងសេវាកម្មផ្សេងៗទាក់ទងនឹងសុខភាពដោយមានប្រសិទ្ធភាពខ្ពស់។
+              ការពិនិត្យវេជ្ជសាស្រ្ត
+              និងសេវាកម្មផ្សេងៗទាក់ទងនឹងសុខភាពដោយមានប្រសិទ្ធភាពខ្ពស់។
             </p>
             <div class="text-center">
               <a href="#departments" class="more-btn"
@@ -522,11 +582,7 @@
   </section>
   <!-- /Doctors Section -->
 
-  <section
-    id="faq"
-    class="faq section "
-    aria-labelledby="faq-heading"
-  >
+  <section id="faq" class="faq section" aria-labelledby="faq-heading">
     <div class="container section-title" data-aos="fade-up">
       <h2 id="faq-heading">សំនួរ-ចម្លើយដែលត្រូវបានគេសួរជាទូទៅ</h2>
     </div>
@@ -657,7 +713,7 @@
   </section>
   <!-- /Faq Section -->
 
-  <section id="report" class="reports section " aria-labelledby="report-heading">
+  <section id="report" class="reports section" aria-labelledby="report-heading">
     <div class="container section-title" data-aos="fade-up">
       <h2 id="report-heading">គំរូរបាយការណ៍</h2>
       <p>
@@ -1298,7 +1354,11 @@
             <div class="video-item">
               <!-- svelte-ignore a11y_click_events_have_key_events -->
               <!-- svelte-ignore a11y_no_static_element_interactions -->
-              <div class="video-thumb-card" onclick={() => openVideoModal(video.src)} style="cursor: pointer;">
+              <div
+                class="video-thumb-card"
+                onclick={() => openVideoModal(video.src)}
+                style="cursor: pointer;"
+              >
                 <div class="video-thumb-icon">
                   <i class="bi bi-play-circle-fill"></i>
                 </div>
@@ -1324,7 +1384,12 @@
     <div class="modal-dialog modal-xl modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
         </div>
         <div class="modal-body">
           {#if selectedVideoUrl}
@@ -1340,11 +1405,7 @@
                 ></iframe>
               {:else}
                 <!-- svelte-ignore a11y_media_has_caption -->
-                <video 
-                  src={selectedVideoUrl} 
-                  controls 
-                  autoplay 
-                  class="w-100"
+                <video src={selectedVideoUrl} controls autoplay class="w-100"
                 ></video>
               {/if}
             {/key}
