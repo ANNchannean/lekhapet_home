@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Navbar from "$lib/components/Navbar.svelte";
-  import Footer from "$lib/components/Footer.svelte";
+  import Navbar from "#lib/components/Navbar.svelte";
+  import Footer from "#lib/components/Footer.svelte";
 
   let searchTerm = $state("");
   let selectedVideoUrl = $state("");
